@@ -1,22 +1,7 @@
-RefreshActionItem (native action bar)
+RefreshActionItem (Action Bar Compat)
 =====================================
 
-A fork of [RefreshActionItem][1] that works with the native action bar instead of with ActionBarSherlock. Use it if your app does not need to maintain Android  2.X compatibility.
-
-To add to your application, follow the instructions [here][1], with the only difference that your Maven dependency should be:
-
-
-```xml
- <dependency>
-     <groupId>com.github.manuelpeinado.refreshactionitem-native</groupId>
-     <artifactId>RefreshActionItem</artifactId>
-     <version>1.0.3</version>
-     <type>apklib</type>
- </dependency>
-```
-
-If you don't use Maven, just skip the step in which you add ActionBarSherlock to your library project in Eclipse.
-
+A fork of [RefreshActionItem][1] that works with the action bar compatibility instead of with ActionBarSherlock.
 
 Libraries used
 --------------------
@@ -31,10 +16,10 @@ Credits
 Who's using it
 --------------
  
-*Does your app use RefreshActionItem-Native? If you want to be featured on this list drop me a line.*
+*Does your app use RefreshActionItem-ActionBarCompat? If you want to be featured on this list drop me a line.*
 
 
-Developed By
+Originally Developed By
 ------------
 
 Manuel Peinado Gallego - <manuel.peinado@gmail.com>
@@ -50,6 +35,20 @@ Manuel Peinado Gallego - <manuel.peinado@gmail.com>
 <a href="http://www.linkedin.com/pub/manuel-peinado-gallego/1b/435/685">
   <img alt="Follow me on Twitter"
        src="https://raw.github.com/ManuelPeinado/NumericPageIndicator/master/art/linkedin.png" />
+
+Adapted By
+------------
+
+Fede Fernández - <fedeproex@gmail.com>
+
+<a href="https://twitter.com/fedeproex">
+  <img alt="Follow me on Twitter"
+       src="https://raw.github.com/ManuelPeinado/NumericPageIndicator/master/art/twitter.png" />
+</a>
+<a href="https://plus.google.com/u/0/113244745500985960923">
+  <img alt="Follow me on Google Plus"
+       src="https://raw.github.com/ManuelPeinado/NumericPageIndicator/master/art/google-plus.png" />
+</a>
 
 License
 -----------
