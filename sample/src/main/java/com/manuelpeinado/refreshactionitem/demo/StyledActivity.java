@@ -20,6 +20,9 @@ import java.util.Random;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,7 +32,7 @@ import android.widget.Toast;
 import com.manuelpeinado.refreshactionitem.RefreshActionItem;
 import com.manuelpeinado.refreshactionitem.RefreshActionItem.RefreshActionListener;
 
-public class StyledActivity extends ListActivity implements RefreshActionListener {
+public class StyledActivity extends ActionBarActivity implements RefreshActionListener {
     private RefreshActionItem mSaveButton;
     private Random r = new Random();
 
@@ -37,19 +40,22 @@ public class StyledActivity extends ListActivity implements RefreshActionListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_styled);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.save, menu);
         MenuItem item = menu.findItem(R.id.save_button);
-        mSaveButton = (RefreshActionItem) item.getActionView();
+        mSaveButton = (RefreshActionItem) MenuItemCompat.getActionView(item);
         mSaveButton.setMenuItem(item);
         mSaveButton.setMax(100);
         mSaveButton.setRefreshActionListener(this);
         String[] items = generateRandomItemList();
-        setListAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_list_item, android.R.id.text1, items));
+        Fragment frg = getSupportFragmentManager().findFragmentById(R.id.fragment);
+        if (frg instanceof SampleListFragment) {
+            ((SampleListFragment) frg).setItems(items);
+        }
         return true;
     }
 
@@ -82,18 +88,6 @@ public class StyledActivity extends ListActivity implements RefreshActionListene
             result[i] = Integer.toString(r.nextInt(1000));
         }
         return result;
-    }
-    
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            Intent parentActivityIntent = new Intent(this, HomeActivity.class);
-            parentActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(parentActivityIntent);
-            finish();
-            return true;
-        }
-        return false;
     }
 
     @Override
